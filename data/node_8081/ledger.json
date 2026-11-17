@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "difficulty": 2,
+  "peers": [],
+  "chain": [
+    {
+      "index": 0,
+      "timestamp": 1700000000,
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "a19d0509f1910ca655e85ff6555f3534ebd6a687483827c554bfb91ad0327603",
+      "nonce": 0,
+      "difficulty": 2,
+      "miner": "0xc3a792f6f1e98d4c5cbac0505122a4403d3f2511",
+      "hash": "8937f38ac1af8b4416812ebb854669fd1f23b926b55e0700aea9b7e37f25ad25",
+      "transactions": []
+    }
+  ],
+  "mempool": []
+}

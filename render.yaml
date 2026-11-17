@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: ipchain-node
+    env: python
+    buildCommand: "pip install -r requirements.txt || true"
+    startCommand: "python3 run_node.py --host 0.0.0.0"
+    plan: free

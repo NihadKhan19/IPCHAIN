@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPChain — Intellectual Property Protection Blockchain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Fira+Code:wght@400;500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L4 6v6c0 5.2 3.4 9.8 8 11 4.6-1.2 8-5.8 8-11V6l-8-4z"/>
+            <path d="M13 7l-4 5h4l-2 5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title-row">
+            <h1>IPChain</h1>
+            <button id="livePulseBtn" class="live-pill" type="button" title="Toggle live telemetry auto-refresh (3s)">
+              <span class="live-dot"></span>
+              <span id="livePulseLabel">LIVE</span>
+            </button>
+          </div>
+          <p class="subtitle">Cryptographic Proof-of-Creation, Smart Licensing &amp; Prior-Art Telemetry</p>
+        </div>
+      </div>
+
+      <div class="wallet-bar">
+        <div class="wallet-select-group">
+          <label for="walletSelect">Active Signer Wallet</label>
+          <select id="walletSelect"></select>
+        </div>
+        <div class="wallet-meta">
+          <div><span class="meta-label">Balance</span><strong id="walletBalance" class="mono-num">0 IPC</strong></div>
+          <div><span class="meta-label">Nonce</span><strong id="walletNonce" class="mono-num">0</strong></div>
+        </div>
+        <div class="wallet-actions">
+          <button id="btnNewWallet" class="btn btn-secondary btn-sm" type="button" title="Generate new secp256k1 wallet in browser">+ Wallet</button>
+          <button id="btnManageWallets" class="btn btn-secondary btn-sm" type="button" title="Edit, rename, or remove wallets">Edit / Remove</button>
+          <button id="btnFaucet" class="btn btn-secondary btn-sm" type="button" title="Request 250 test IPC from Genesis Treasury">Claim 250 IPC</button>
+          <button id="btnMineHeader" class="btn btn-primary btn-sm" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Mine Block (<span id="hdrMempool">0</span>)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-wrap">
+      <nav class="nav-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="registry">Dashboard &amp; IP Registry</button>
+        <button class="tab-btn" data-tab="register">Register &amp; Protect IP</button>
+        <button class="tab-btn" data-tab="verify">Verify &amp; Plagiarism Check</button>
+        <button class="tab-btn" data-tab="governance">Licenses &amp; Disputes</button>
+        <button class="tab-btn" data-tab="explorer">Blocks &amp; Mempool</button>
+        <button class="tab-btn" data-tab="audit">Audit, Tamper Lab &amp; P2P</button>
+      </nav>
+      <div class="sync-stamp">Last sync: <span id="lastSyncTime" class="mono-inline">—</span></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="offlineBanner" class="offline-banner hidden" role="status" aria-live="polite">
+      <div class="offline-banner-main">
+        <span aria-hidden="true">&#9888;</span>
+        <span id="offlineBannerText">Offline mode &middot; Showing last cached ledger snapshot while reconnecting.</span>
+      </div>
+      <button type="button" id="btnRetrySync" class="btn btn-sm btn-secondary">&#8635; Retry Sync</button>
+    </div>
+
+    <!-- TAB 1: EXECUTIVE TELEMETRY DASHBOARD & IP REGISTRY -->
+    <section id="tab-registry" class="tab-panel active">
+      <div class="grid-12">
+        <!-- TOP ROW: 3 KPI CARDS (4 COLS EACH) -->
+        <div class="card kpi-card col-4">
+          <div class="kpi-head">
+            <span class="kpi-label">Protected IP Assets</span>
+            <span class="kpi-icon cyan" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.2 3.4 9.8 8 11 4.6-1.2 8-5.8 8-11V6l-8-4z"/></svg>
+            </span>
+          </div>
+          <div class="kpi-value mono-kpi" id="kpiTotalIPs">0</div>
+          <div class="kpi-sub">
+            <span>Height: <strong id="statHeight" class="mono-inline">0</strong> blocks</span>
+            <span>Diff: <strong id="statDifficulty" class="mono-inline">2</strong></span>
+            <span>Active: <strong id="statIPs" class="mono-inline">0</strong></span>
+          </div>
+        </div>
+
+        <div class="card kpi-card col-4">
+          <div class="kpi-head">
+            <span class="kpi-label">Royalties &amp; License Flow</span>
+            <span class="kpi-icon green" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </span>
+          </div>
+          <div class="kpi-value mono-kpi" id="kpiRoyaltyVolume">0 <span class="kpi-unit">IPC</span></div>
+          <div class="kpi-sub">
+            <span>Active Licenses: <strong id="statLicenses" class="mono-inline">0</strong></span>
+            <span>Creator Splits: <strong id="kpiCreatorSplits" class="mono-inline">0 IPC</strong></span>
+          </div>
+        </div>
+
+        <div class="card kpi-card col-4">
+          <div class="kpi-head">
+            <span class="kpi-label">Chain Integrity &amp; Queue</span>
+            <span class="kpi-icon" id="kpiIntegrityIcon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+          </div>
+          <div class="kpi-value mono-kpi" id="statIntegrity">CHECKING</div>
+          <div class="kpi-sub">
+            <span>Mempool: <strong id="statMempool" class="mono-inline">0</strong> tx</span>
+            <span>Open Disputes: <strong id="statDisputes" class="mono-inline">0</strong></span>
+            <span id="statIntegrityPill" class="integrity-tag">&#9203; Audit</span>
+          </div>
+        </div>
+
+        <!-- MIDDLE ROW: 8-COL AREA CHART + 4-COL ALERTS PANEL -->
+        <div class="card chart-card col-8">
+          <div class="card-head-row">
+            <div>
+              <h2>On-Chain IP Telemetry</h2>
+              <p class="muted">Block-by-block cumulative registrations, transaction velocity &amp; IPC economic flow</p>
+            </div>
+            <div class="chart-controls" role="group" aria-label="Chart metric selector">
+              <button type="button" class="chip-btn active" data-chart-metric="cumulative_ips">Cumulative IPs</button>
+              <button type="button" class="chip-btn" data-chart-metric="tx_activity">Block Txs</button>
+              <button type="button" class="chip-btn" data-chart-metric="ipc_volume">IPC Flow</button>
+            </div>
+          </div>
+          <div class="chart-stage" id="telemetryChartStage">
+            <svg id="telemetryChartSvg" viewBox="0 0 760 240" preserveAspectRatio="none" aria-label="On-chain IP telemetry area chart"></svg>
+            <div id="chartTooltip" class="chart-tooltip hidden"></div>
+          </div>
+        </div>
+
+        <div class="card alerts-card col-4">
+          <div class="card-head-row">
+            <div>
+              <h2>Alerts &amp; Live Feed</h2>
+              <p class="muted">Disputes, similarity flags &amp; recent blocks</p>
+            </div>
+            <span class="badge-count" id="alertCountBadge">0</span>
+          </div>
+          <div id="alertsPanel" class="alerts-stack" aria-busy="true">
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-line short"></div>
+              <div class="skeleton skeleton-line medium"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton skeleton-line short"></div>
+              <div class="skeleton skeleton-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM ROW: 12-COL REGISTRY TABLE / GRID -->
+        <div class="card col-12">
+          <div class="panel-header">
+            <div>
+              <h2>Immutable Intellectual Property Registry</h2>
+              <p class="muted">Real-time indexed ledger of registered patents, software, copyrights, trademarks, and chain of custody.</p>
+            </div>
+            <div class="filters">
+              <input type="search" id="regSearch" placeholder="Search title, IP ID, hash, tag, owner..." />
+              <select id="regTypeFilter">
+                <option value="">All Types</option>
+                <option value="PATENT">PATENT</option>
+                <option value="SOFTWARE">SOFTWARE</option>
+                <option value="COPYRIGHT">COPYRIGHT</option>
+                <option value="TRADEMARK">TRADEMARK</option>
+                <option value="TRADE_SECRET">TRADE_SECRET</option>
+                <option value="DESIGN">DESIGN</option>
+              </select>
+              <select id="regStatusFilter">
+                <option value="">All Statuses</option>
+                <option value="ACTIVE">ACTIVE</option>
+                <option value="DISPUTED">DISPUTED</option>
+                <option value="REVOKED">REVOKED</option>
+              </select>
+              <div class="view-toggle" role="group" aria-label="Registry layout toggle">
+                <button type="button" id="viewTableBtn" class="chip-btn active">Table</button>
+                <button type="button" id="viewCardsBtn" class="chip-btn">Cards</button>
+              </div>
+            </div>
+          </div>
+          <div id="registryGrid" aria-busy="true">
+            <div class="skeleton-row">
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line short"></div>
+              <div class="skeleton skeleton-line"></div>
+            </div>
+            <div class="skeleton-row">
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line medium"></div>
+              <div class="skeleton skeleton-line short"></div>
+              <div class="skeleton skeleton-line"></div>
+            </div>
+            <div class="skeleton-row">
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line short"></div>
+              <div class="skeleton skeleton-line medium"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: REGISTER IP -->
+    <section id="tab-register" class="tab-panel">
+      <div class="grid-12">
+        <div class="card col-8">
+          <h2>Register &amp; Timestamp New IP</h2>
+          <p class="muted">Files are hashed locally in your browser using SHA-256. Transactions are signed client-side via secp256k1 ECDSA.</p>
+
+          <form id="registerForm" class="stack-form">
+            <div class="dropzone" id="regDropzone">
+              <input type="file" id="regFileInput" hidden />
+              <p><strong>Drop any file here</strong> or <button type="button" id="regBrowseBtn" class="link-btn">choose a file</button> to compute SHA-256 locally</p>
+              <small id="regFileMeta" class="muted">No file selected — or enter text/code below.</small>
+            </div>
+
+            <label>
+              Work / Abstract / Source Text (optional if file selected — also builds SimHash fingerprint)
+              <textarea id="regText" rows="4" placeholder="Paste patent abstract, source snippet, lyrics, or specification..."></textarea>
+            </label>
+
+            <div class="hash-preview">
+              <div><span class="meta-label">SHA-256 Content Hash</span><code id="regContentHash">—</code></div>
+              <div><span class="meta-label">64-bit SimHash</span><code id="regSimhash">0000000000000000</code></div>
+            </div>
+
+            <div id="regPrecheckBox" class="alert hidden"></div>
+
+            <div class="form-row">
+              <label>
+                IP Title *
+                <input type="text" id="regTitle" required minlength="3" maxlength="140" placeholder="e.g. Zero-Knowledge DNA Matcher v1" />
+              </label>
+              <label>
+                IP Category *
+                <select id="regType">
+                  <option value="PATENT">PATENT</option>
+                  <option value="SOFTWARE">SOFTWARE</option>
+                  <option value="COPYRIGHT">COPYRIGHT</option>
+                  <option value="TRADEMARK">TRADEMARK</option>
+                  <option value="TRADE_SECRET">TRADE_SECRET</option>
+                  <option value="DESIGN">DESIGN</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Description / Claims Summary
+              <textarea id="regDescription" rows="2" maxlength="2000" placeholder="Public summary of the protected intellectual property..."></textarea>
+            </label>
+
+            <div class="form-row three">
+              <label>
+                Jurisdiction
+                <input type="text" id="regJurisdiction" value="GLOBAL" maxlength="32" />
+              </label>
+              <label>
+                Creator Royalty (BPS, 500 = 5%)
+                <input type="number" id="regRoyalty" value="500" min="0" max="5000" />
+              </label>
+              <label>
+                Public License Price (IPC)
+                <input type="number" id="regPrice" value="50" min="0" />
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                Default Public License Type
+                <select id="regLicType">
+                  <option value="COMMERCIAL">COMMERCIAL</option>
+                  <option value="NON_EXCLUSIVE">NON_EXCLUSIVE</option>
+                  <option value="ACADEMIC">ACADEMIC</option>
+                  <option value="OPEN_SOURCE">OPEN_SOURCE</option>
+                </select>
+              </label>
+              <label>
+                Tags (comma-separated)
+                <input type="text" id="regTags" placeholder="ai, cryptography, rust" />
+              </label>
+            </div>
+
+            <div class="checkbox-row">
+              <label class="inline-check"><input type="checkbox" id="regPublicLicense" checked /> Enable instant self-service license purchases</label>
+              <label class="inline-check"><input type="checkbox" id="regAutoMine" checked /> Auto-mine block immediately after signing</label>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" id="btnPrecheck" class="btn btn-secondary">Check Prior Art</button>
+              <button type="submit" class="btn btn-primary">Sign &amp; Register IP</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card col-4 info-card">
+          <h3>Protocol Security Guarantees</h3>
+          <ul class="feature-list">
+            <li><strong>Zero-Exposure Timestamping:</strong> Only the SHA-256 digest is committed on-chain—private source files stay on your machine.</li>
+            <li><strong>Deterministic IP ID &amp; Uniqueness:</strong> Duplicate registrations of an identical <code>content_hash</code> are rejected at consensus level.</li>
+            <li><strong>Perceptual Prior-Art Guard:</strong> A 64-bit SimHash checks existing filings for textual overlap to flag plagiarism early.</li>
+            <li><strong>Automated Royalty Splits:</strong> Even after transferring IP ownership, public license purchases route <code>royalty_bps</code> to the original creator.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: VERIFY & PLAGIARISM -->
+    <section id="tab-verify" class="tab-panel">
+      <div class="card">
+        <h2>Verify Proof of Existence &amp; Prior-Art Similarity</h2>
+        <p class="muted">Drop a file, paste text, or query a SHA-256 content hash / IP ID to verify registration and Merkle inclusion proofs.</p>
+
+        <div class="grid-12" style="margin-top: 16px;">
+          <div class="stack-form col-6">
+            <div class="dropzone" id="verDropzone">
+              <input type="file" id="verFileInput" hidden />
+              <p><strong>Drop file to verify</strong> or <button type="button" id="verBrowseBtn" class="link-btn">browse</button></p>
+              <small id="verFileMeta" class="muted">Computes SHA-256 &amp; SimHash locally in browser.</small>
+            </div>
+            <label>
+              Or Paste Document / Code Text
+              <textarea id="verText" rows="4" placeholder="Paste text to hash &amp; check against registered prior art..."></textarea>
+            </label>
+            <div class="form-row">
+              <label>
+                Or Content Hash (SHA-256)
+                <input type="text" id="verHashInput" placeholder="64-character hex digest" />
+              </label>
+              <label>
+                Or IP ID
+                <input type="text" id="verIpIdInput" placeholder="e.g. IP-..." />
+              </label>
+            </div>
+            <button type="button" id="btnRunVerify" class="btn btn-primary">Verify Against Blockchain</button>
+          </div>
+
+          <div id="verifyResultPane" class="verify-pane col-6">
+            <p class="muted">Run a verification query to view cryptographic proof of existence, owner history, Merkle inclusion path, and SimHash similarity hits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: LICENSES & DISPUTES -->
+    <section id="tab-governance" class="tab-panel">
+      <div class="grid-12">
+        <div class="card col-6">
+          <div class="panel-header compact">
+            <h3>Active &amp; Historical Licenses</h3>
+          </div>
+          <div id="licensesList" class="stack-list">
+            <div class="skeleton-card"><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line medium"></div></div>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <div class="panel-header compact">
+            <div>
+              <h3>Prior-Art &amp; Infringement Disputes</h3>
+              <small class="muted">Arbitrator Authority: <code id="arbitratorAddrLabel">—</code></small>
+            </div>
+          </div>
+          <div id="disputesList" class="stack-list">
+            <div class="skeleton-card"><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line medium"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: BLOCK EXPLORER & MEMPOOL -->
+    <section id="tab-explorer" class="tab-panel">
+      <div class="grid-12">
+        <div class="card col-12">
+          <div class="panel-header">
+            <div>
+              <h2>Mempool (Pending Signed Transactions)</h2>
+              <p class="muted">Transactions waiting to be sealed into the next Proof-of-Work block.</p>
+            </div>
+            <button id="btnMineExplorer" class="btn btn-primary">Mine Block Now</button>
+          </div>
+          <div id="mempoolList" class="stack-list">
+            <div class="skeleton-card"><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line"></div></div>
+          </div>
+        </div>
+
+        <div class="card col-12">
+          <h2>Blockchain Explorer</h2>
+          <div id="blocksList" class="stack-list">
+            <div class="skeleton-card"><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line medium"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: AUDIT, TAMPER LAB, WALLETS & P2P -->
+    <section id="tab-audit" class="tab-panel">
+      <div class="grid-12">
+        <div class="card col-7">
+          <div class="panel-header compact">
+            <h3>Full Cryptographic Integrity Audit</h3>
+            <button id="btnRunAudit" class="btn btn-secondary btn-sm">Re-Run Full Audit</button>
+          </div>
+          <p class="muted">Replays every block from Genesis #0, checking PoW difficulty, parent hashes, Merkle roots, secp256k1 signatures, and state roots.</p>
+          <div id="auditReportBox">
+            <div class="skeleton-card"><div class="skeleton skeleton-line short"></div><div class="skeleton skeleton-line medium"></div></div>
+          </div>
+        </div>
+
+        <div class="card col-5">
+          <h3>Tamper Attack Simulator (Non-Destructive)</h3>
+          <p class="muted">Tests immutability on an isolated in-memory clone of the chain—your live ledger stays safe.</p>
+          <div class="stack-form">
+            <div class="form-row">
+              <label>
+                Target Block Index
+                <input type="number" id="tamperBlockIdx" value="1" min="0" />
+              </label>
+              <label>
+                Attack Vector
+                <select id="tamperTarget">
+                  <option value="tx_title">Alter Registered IP Title in Tx[0]</option>
+                  <option value="tx_owner_payload">Spoof Tx[0] Sender Address</option>
+                  <option value="block_timestamp">Backdate Block Timestamp</option>
+                  <option value="block_miner">Change Block Miner Address</option>
+                  <option value="state_root">Corrupt Block State Root</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Replacement Value (for title alteration)
+              <input type="text" id="tamperReplacement" value="Forged Ownership Title" />
+            </label>
+            <button id="btnSimulateTamper" class="btn btn-danger">Simulate Tamper Attack</button>
+          </div>
+          <div id="tamperResultBox" style="margin-top: 12px;"></div>
+        </div>
+
+        <div class="card col-6">
+          <div class="panel-header compact">
+            <h3>Client Wallets &amp; Token Transfer</h3>
+            <button id="btnManageWalletsTab" class="btn btn-secondary btn-sm" type="button">Edit / Remove Wallets</button>
+          </div>
+          <div class="stack-form">
+            <div class="wallet-details-box" id="activeWalletDetails"></div>
+            <div id="savedWalletsList" class="stack-list"></div>
+            <div class="form-row">
+              <label>
+                Import Private Key (64-hex)
+                <input type="text" id="importPrivKey" placeholder="Paste 64-hex secp256k1 private key" />
+              </label>
+              <label>
+                Label
+                <input type="text" id="importLabel" placeholder="My Custom Wallet" />
+              </label>
+            </div>
+            <button id="btnImportWallet" class="btn btn-secondary btn-sm">Import Private Key</button>
+
+            <hr class="sep" />
+            <h4>Send IPC Tokens</h4>
+            <div class="form-row">
+              <label>
+                Recipient Address (0x...)
+                <input type="text" id="sendToAddr" placeholder="0x..." />
+              </label>
+              <label>
+                Amount (IPC)
+                <input type="number" id="sendAmount" value="25" min="1" />
+              </label>
+            </div>
+            <button id="btnSendTokens" class="btn btn-primary btn-sm">Sign &amp; Send IPC</button>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <h3>P2P Multi-Node Consensus Sync</h3>
+          <p class="muted">Run a second node (e.g. <code>python3 run_node.py --port 8081 --no-seed</code>) and sync the longest valid chain.</p>
+          <div class="stack-form">
+            <div class="form-row">
+              <label>
+                Peer Node URL
+                <input type="url" id="peerUrlInput" placeholder="http://127.0.0.1:8081" />
+              </label>
+              <div style="display:flex; align-items:flex-end; gap:8px;">
+                <button id="btnAddPeer" class="btn btn-secondary">Register Peer</button>
+                <button id="btnSyncPeers" class="btn btn-primary">Sync Chain</button>
+              </div>
+            </div>
+            <div id="peersListBox" class="stack-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL FOR CERTIFICATE / ACTIONS -->
+  <div id="modalBackdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">IP Asset Details</h3>
+        <button id="modalClose" class="btn btn-secondary btn-sm">Close</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

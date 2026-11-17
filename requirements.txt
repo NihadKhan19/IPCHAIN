@@ -1,0 +1,2 @@
+# IPChain utilizes the Python 3.10+ standard library exclusively.
+# Zero external pip packages are required.

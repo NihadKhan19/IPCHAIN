@@ -1,0 +1,745 @@
+{
+  "version": 1,
+  "difficulty": 2,
+  "peers": [],
+  "chain": [
+    {
+      "index": 0,
+      "timestamp": 1700000000,
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "a19d0509f1910ca655e85ff6555f3534ebd6a687483827c554bfb91ad0327603",
+      "nonce": 0,
+      "difficulty": 2,
+      "miner": "0xc3a792f6f1e98d4c5cbac0505122a4403d3f2511",
+      "hash": "8937f38ac1af8b4416812ebb854669fd1f23b926b55e0700aea9b7e37f25ad25",
+      "transactions": []
+    },
+    {
+      "index": 1,
+      "timestamp": 1794373023,
+      "previous_hash": "8937f38ac1af8b4416812ebb854669fd1f23b926b55e0700aea9b7e37f25ad25",
+      "merkle_root": "8d739f7b22055175aba558040f6b025009ff7dff9ec9f6e85f922a950e636d3f",
+      "state_root": "4b02048c6b30400c75e329978ebb95c806d833404b373dcc7dd8b33a0d91754a",
+      "nonce": 449,
+      "difficulty": 2,
+      "miner": "0xc3a792f6f1e98d4c5cbac0505122a4403d3f2511",
+      "hash": "008e31f66a4a365ff7181b4523d294ad8297218229b2913e581dde2423cbb67f",
+      "transactions": [
+        {
+          "tx_id": "57561fb39e2d20c6de330f0ff81d4f8cb46cc9bd8d9650e6a2afee10db2df7f9",
+          "type": "REGISTER_IP",
+          "sender": "0x8a69708ae41a291c628b816470862c76835fdb01",
+          "nonce": 0,
+          "fee": 1,
+          "timestamp": 1794372733,
+          "payload": {
+            "title": "Quantum-Resistant ZK Identity Protocol",
+            "ip_type": "PATENT",
+            "description": "A quantum-resistant zero-knowledge identity verification protocol using lattice-based commitments and Merkle inclusion proofs for decentralized intellectual property timestamping without exposing underlying trade secrets.",
+            "content_hash": "03f06af11fac28c06fc2ab36fceefeb77427871e07456870276b43892f710126",
+            "simhash": "e0d3c7d2d120bce5",
+            "jurisdiction": "WIPO",
+            "royalty_bps": 1000,
+            "license_price": 120,
+            "allow_public_license": true,
+            "default_license_type": "COMMERCIAL",
+            "tags": [
+              "cryptography",
+              "zkp",
+              "post-quantum"
+            ]
+          },
+          "public_key": "034af05318c6048b1b93bdfb7af90fafddd57399ee735fdd568ca8900b1b4906b3",
+          "signature": "a0f816c0098f4ec647b3bed2386e56d156a7b9d7de1141a6bcd9642f32731cb34c2ecf24ddddc20d2f9fffb12588a7cdee4f333747b472db1b180fa22a23fc1b"
+        },
+        {
+          "tx_id": "43f1fa42a4f377b9a4ab59bfbc4ed182500d183e2c5f304bd541432b63cb0c4f",
+          "type": "REGISTER_IP",
+          "sender": "0x8a69708ae41a291c628b816470862c76835fdb01",
+          "nonce": 1,
+          "fee": 1,
+          "timestamp": 1794372735,
+          "payload": {
+            "title": "ZeroCopy Merkle Consensus Engine v1.0",
+            "ip_type": "SOFTWARE",
+            "description": "fn verify_merkle_inclusion(leaf: [u8; 32], proof: &[(bool, [u8; 32])], root: [u8; 32]) -> bool { /* ZeroCopy consensus verifier v1.0 */ true }",
+            "content_hash": "2534c81ff3adcb7175d12916fd5b20f1f2949e8c0735a4a6a9f5b667d7bd1b95",
+            "simhash": "d1bfab4af9f30e9f",
+            "jurisdiction": "GLOBAL",
+            "royalty_bps": 500,
+            "license_price": 80,
+            "allow_public_license": true,
+            "default_license_type": "COMMERCIAL",
+            "tags": [
+              "rust",
+              "consensus",
+              "merkle"
+            ]
+          },
+          "public_key": "034af05318c6048b1b93bdfb7af90fafddd57399ee735fdd568ca8900b1b4906b3",
+          "signature": "6756ad14d35c96bc7c27e89a89c326eefb88c11661e756813208168368bd53920410991073b87502ff6dfe49a7edf664ad99d2f548f079dcaecd2f89b2a5d014"
+        },
+        {
+          "tx_id": "e0a314b716ffeaf8796ba13e28813bcc63531d57f4f22cf9e537c956c5d53ba5",
+          "type": "REGISTER_IP",
+          "sender": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+          "nonce": 0,
+          "fee": 1,
+          "timestamp": 1794372737,
+          "payload": {
+            "title": "NovaSynth Audio™ Brand Mark & Sonic Logo",
+            "ip_type": "TRADEMARK",
+            "description": "NOVASYNTH AUDIO — Stylized hexagonal waveform emblem and acoustic chime registered under Class 9 and Class 42 digital synthesis software.",
+            "content_hash": "a15e944a7d58e01684f9e351e8f1219e74904dd3afe2c89fb649ba33ca871e23",
+            "simhash": "e96dc5613363c262",
+            "jurisdiction": "US",
+            "royalty_bps": 1500,
+            "license_price": 0,
+            "allow_public_license": false,
+            "default_license_type": "NON_EXCLUSIVE",
+            "tags": [
+              "brand",
+              "audio",
+              "trademark"
+            ]
+          },
+          "public_key": "03b58ea780055b02c59ec2eba92fe5baffe87e0b2b427e2cdf484fe6759f41e9bb",
+          "signature": "ff88ae27e77467bad7602919b9de0446ada90a574b7478343eca21f10c1d10d64a0553f04c4f0d213b0fd607d5844782bc7ec71362aca649bc5cb6170e0b65b2"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "timestamp": 1794373023,
+      "previous_hash": "008e31f66a4a365ff7181b4523d294ad8297218229b2913e581dde2423cbb67f",
+      "merkle_root": "753e2dd446e9c82a1c89bd7f5c1828de9ddd18e17ae9cd3d3ab29dc837c18294",
+      "state_root": "f736ee1de1fb471050fa71e5b7b2ae80b15bb5184a0d7201594f732b18d74521",
+      "nonce": 47,
+      "difficulty": 2,
+      "miner": "0x8a69708ae41a291c628b816470862c76835fdb01",
+      "hash": "005907af31cc40eadd57b8d464b38c694046d7e942b25de82d0bced7a8da1a11",
+      "transactions": [
+        {
+          "tx_id": "27b786238de03108bfc8d3b9cc978b12ad40c52090fe3c8d661282c53505767c",
+          "type": "TRANSFER_IP",
+          "sender": "0x8a69708ae41a291c628b816470862c76835fdb01",
+          "nonce": 2,
+          "fee": 1,
+          "timestamp": 1794372753,
+          "payload": {
+            "ip_id": "IP-8BAB5CA6CC6B7F97",
+            "to_address": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+            "note": "Assigned commercial distribution rights to Studio Bob while retaining 5% creator royalty"
+          },
+          "public_key": "034af05318c6048b1b93bdfb7af90fafddd57399ee735fdd568ca8900b1b4906b3",
+          "signature": "89f7152cd32d92cc1003caf1d9dd49caa4337ead9b0616407d8a62dae413743c7fc648d38c05adc174a999a3bf3c818ffe3c7c4c6df6f8a9133916416c9d66ab"
+        },
+        {
+          "tx_id": "0474c4032c57433c524513e75ee75f26fcd2cbf92651c8e47744af203c35de80",
+          "type": "GRANT_LICENSE",
+          "sender": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+          "nonce": 1,
+          "fee": 1,
+          "timestamp": 1794372755,
+          "payload": {
+            "ip_id": "IP-A6197D2F9A4F9DD0",
+            "licensee": "0xd174b0838e85dadb912a1f5d6c7a86d194d7ac3e",
+            "license_type": "ACADEMIC",
+            "scope": "University DSP research showcase and non-commercial audio demos",
+            "duration_blocks": 500,
+            "royalty_bps": 0
+          },
+          "public_key": "03b58ea780055b02c59ec2eba92fe5baffe87e0b2b427e2cdf484fe6759f41e9bb",
+          "signature": "59270fa916cbca1a112ff12bbaf3e440c43d037c968ddaa2f5c5d8458146f7f031418210146e0151098f0b070daee6a47cec975a70e907a9b9214b609ee32ed6"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "timestamp": 1794373023,
+      "previous_hash": "005907af31cc40eadd57b8d464b38c694046d7e942b25de82d0bced7a8da1a11",
+      "merkle_root": "37efcc6b804110e1656f4a91b7f2d1762906c0ef6bc188acb3562b2dd06bf45c",
+      "state_root": "aec4ba392218afe2bc497a3f8c0f100f64e93465120752912af20590df2d4cbc",
+      "nonce": 251,
+      "difficulty": 2,
+      "miner": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+      "hash": "00dea54f09080ceda686c9d1f5f8b5eafdcafa76f0ef7683086cd0132566f00a",
+      "transactions": [
+        {
+          "tx_id": "da0182fb4097671e3cb12f909dc087af653eb1b648837cb94ea4561ba9ab20b8",
+          "type": "PURCHASE_LICENSE",
+          "sender": "0xd174b0838e85dadb912a1f5d6c7a86d194d7ac3e",
+          "nonce": 0,
+          "fee": 1,
+          "timestamp": 1794372783,
+          "payload": {
+            "ip_id": "IP-8BAB5CA6CC6B7F97",
+            "license_type": "COMMERCIAL",
+            "scope": "Enterprise cloud validator deployment (multi-region)",
+            "duration_blocks": 1000
+          },
+          "public_key": "035225672779f66fb8831ff1b284eec6406d8f3ae9a7628ad6ce3951b3bdaeaec0",
+          "signature": "33075897aa0de4ed7837637f31535b85428e5cbf9126b1561aa42f27014f54fb5f2caec8ab40ee93adb96995809f8b03c4e969dec576c2ae985caf8c5c5e2bdc"
+        },
+        {
+          "tx_id": "3a4d7ff2e9127fd43f893a5e38ead3a977278c1de3d02fa03fac51d9f408d8ac",
+          "type": "REGISTER_IP",
+          "sender": "0x80e12ce206630a6536d08a485d965e71dc53323c",
+          "nonce": 0,
+          "fee": 1,
+          "timestamp": 1794372785,
+          "payload": {
+            "title": "ZK Lattice Identity Timestamp Whitepaper (Copycat Filing)",
+            "ip_type": "COPYRIGHT",
+            "description": "A quantum-resistant zero-knowledge identity verification protocol using lattice-based commitments and Merkle inclusion proofs for decentralized intellectual property timestamping without exposing underlying trade secrets!",
+            "content_hash": "c38f774d0977b9be826f9507efb3b3ef960145eaf22e1bc795d0e4390e7ee96d",
+            "simhash": "e0d3c7d2d120bce5",
+            "jurisdiction": "EU",
+            "royalty_bps": 2000,
+            "license_price": 200,
+            "allow_public_license": true,
+            "default_license_type": "COMMERCIAL",
+            "tags": [
+              "zkp",
+              "whitepaper"
+            ]
+          },
+          "public_key": "03da07167f9c6a0f659867df07f3b9f373677d77dda0ef3b3bd77b348b03f99449",
+          "signature": "39f0e0740e31ddc44084d5888554be79938df9efd22d7dd996ba74aa68105f303a0d5b6cb0eba8d871f3b5789553f76d8d29793987653dfc4e3987bd8618f37a"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "timestamp": 1794373023,
+      "previous_hash": "00dea54f09080ceda686c9d1f5f8b5eafdcafa76f0ef7683086cd0132566f00a",
+      "merkle_root": "b2fcf3f2775ce5b5aad61bcc9f198fb85e76e7a93e69f22b4e88e9940f25ad63",
+      "state_root": "4cb43d6cfaa1e43501ae57a5923ff03b1d0836267851bd20d507479cea10a4d2",
+      "nonce": 13,
+      "difficulty": 2,
+      "miner": "0xc3a792f6f1e98d4c5cbac0505122a4403d3f2511",
+      "hash": "00080094c637610a37bece099856aa8eb1bc43a411dfba52893aa3ddfc91466d",
+      "transactions": [
+        {
+          "tx_id": "af20da5947ca6594b29a8d3526e1b20d625f657fc6c2c49974d48eb808d03b36",
+          "type": "FILE_DISPUTE",
+          "sender": "0x8a69708ae41a291c628b816470862c76835fdb01",
+          "nonce": 3,
+          "fee": 1,
+          "timestamp": 1794372813,
+          "payload": {
+            "accused_ip_id": "IP-002F6153E3084DD3",
+            "prior_art_ip_id": "IP-F6EB168E69CB0DD7",
+            "claim_type": "PRIOR_ART",
+            "evidence_hash": "03f06af11fac28c06fc2ab36fceefeb77427871e07456870276b43892f710126",
+            "description": "Accused filing reproduces Alice's Block #1 patent abstract nearly verbatim (SimHash match >95%) after prior-art commitment was already mined."
+          },
+          "public_key": "034af05318c6048b1b93bdfb7af90fafddd57399ee735fdd568ca8900b1b4906b3",
+          "signature": "15963abe7e4e9689fad893ddab7498966f7c85f0a2cddf68c534284c5dba898a5e95b15e2db0f9e9b913435c7660817d5998cb51c8e5faa3d797bcd4c1949aa9"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "timestamp": 1794373478,
+      "previous_hash": "00080094c637610a37bece099856aa8eb1bc43a411dfba52893aa3ddfc91466d",
+      "merkle_root": "2fda2be8668891740f40f9d0f77e1f70f0292f77b4b7c651ae3f7e575844fbdb",
+      "state_root": "6d6927c5625145acd6319ddfc54429df84718ac04cb99a15996c3f221c703bd4",
+      "nonce": 93,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "00f1741b8818fd5456594ab99c7dfd1b7c4f00f75cab80682c321a58eb45ce8e",
+      "transactions": [
+        {
+          "tx_id": "871a7b1c94629febb4a0325a85df8eee69f01f1622339ca986313aadabc4acaa",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 0,
+          "fee": 1,
+          "timestamp": 1794373478,
+          "payload": {
+            "to_address": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "96f96285c5da6bed2672c67c3496df2263f5b23ed764853da92755ee890069b54a8d61a3786db3157494a357106cd6448466964430d2f33bb1e19fdb39f4397b"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "timestamp": 1794373479,
+      "previous_hash": "00f1741b8818fd5456594ab99c7dfd1b7c4f00f75cab80682c321a58eb45ce8e",
+      "merkle_root": "be67668253be4f33fead838217b18f5b9e88f70e555429c5fca5817401ba7d5b",
+      "state_root": "71a51c833575410e69c15b5922dcd140b145ca523ebcc61e29273451d04bff28",
+      "nonce": 52,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "000aa1da1252628e54f29b3b7cd6a7110d28a8ea29b42c26c4a5dea2fce272dd",
+      "transactions": [
+        {
+          "tx_id": "2ed7697f90d76c51cce8d79e43afe1311c7b30e48069698a125178b1901d4e1a",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 1,
+          "fee": 1,
+          "timestamp": 1794373479,
+          "payload": {
+            "to_address": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "54e1a14594a3f5a1184b0fd7d3810bf9cd50a42259ee038dfcb85d8c99f4ace155e2b92b0177238560ee7a87c10fdc344c85204ab3126b43d3d12e568ef8beff"
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "timestamp": 1794373479,
+      "previous_hash": "000aa1da1252628e54f29b3b7cd6a7110d28a8ea29b42c26c4a5dea2fce272dd",
+      "merkle_root": "e730fc6b88868b88970ce678aae49e6bea5a2b3834075a4248d720b903e31623",
+      "state_root": "f5a7c1789eb21fea3dfedcb92d5b5416c84465707b80c1b62d07ef519fd3a570",
+      "nonce": 53,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "008e9589d4fae70b2aead86541513c599df0ace22a7222d8fa6649e1ad8148df",
+      "transactions": [
+        {
+          "tx_id": "e8695e60978f3c0d97801458fdaba14a1766a50badbf818be2ff9eaf7e72fcf3",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 2,
+          "fee": 1,
+          "timestamp": 1794373479,
+          "payload": {
+            "to_address": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "6753f3ecd898cb17afe256674e6d83ab0b3ed56b03917ff8b108b9ffb4da1262470f47a2611624a73bedd4f78deba220d5d280e3ee9412e69db515bce75a20aa"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "timestamp": 1794373479,
+      "previous_hash": "008e9589d4fae70b2aead86541513c599df0ace22a7222d8fa6649e1ad8148df",
+      "merkle_root": "7e81112687b2de10c2c7c2580fec123bd846563f65845a5429fde580e2d698be",
+      "state_root": "59ee16b2a67941a0f068c8e62d99ebd83c772e2064a0db030c9bc22cf17cc81e",
+      "nonce": 3,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "005b9cb4e6297650d988641c1f823c964d9795cc6408e95e761f09a9dd2eb5ab",
+      "transactions": [
+        {
+          "tx_id": "782635233a808c65d00efac4fc1d11f4f31b304963cc0ba17aa8c9fe33746bbd",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 3,
+          "fee": 1,
+          "timestamp": 1794373479,
+          "payload": {
+            "to_address": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "0a23e4ed8b2a182046694ca37b9a8d21e9431d1dcff8427aa24ff89f0f4f8fba0c5d8fe99c90f04100af461c80f4dd050c49c07278ce440697967bbca77ba7ea"
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "timestamp": 1794373480,
+      "previous_hash": "005b9cb4e6297650d988641c1f823c964d9795cc6408e95e761f09a9dd2eb5ab",
+      "merkle_root": "ee1c9df230e0d152249536dd2d37f5a04f53d22a9fe13e5e45084eff8f4b83aa",
+      "state_root": "6620019cdd319d5c9699eb7eb637cf7bc2bcaedea0d644a5370e16c41099daec",
+      "nonce": 414,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "00900076ba704b2bfa3f8e32ff73576b4a0fe4170e2cc8493d4b04283cf45df9",
+      "transactions": [
+        {
+          "tx_id": "6a0b90a97926dfc39688b99d112ba9ca36ec4699ef25fae4927878f01529cfbe",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 4,
+          "fee": 1,
+          "timestamp": 1794373480,
+          "payload": {
+            "to_address": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "324efa5486025b339ff169f6363034ab3e8fc32dfccb2d7c04065dc378a568ad0127a1d821f5de7dd1885cca86b6bf7cbcbde05172889f2c91b8cd690dc06fb0"
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "timestamp": 1794373480,
+      "previous_hash": "00900076ba704b2bfa3f8e32ff73576b4a0fe4170e2cc8493d4b04283cf45df9",
+      "merkle_root": "e12223065aa3e2801f41f745f299dffb94793f83e06ca7cc30c0f651846ca0b5",
+      "state_root": "13abda76029fac2750190dd5d3f16daa5338dbca1d51cb11217d2616525f1f96",
+      "nonce": 570,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "00df023fb4b8550a05f5d7565ace216625003b0a839af304c3a98769576b3b38",
+      "transactions": [
+        {
+          "tx_id": "e2c25ff67230c4bc35eb4d2a45be5475c0b8c70fa261b18b877eb5901b26cc6e",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 5,
+          "fee": 1,
+          "timestamp": 1794373480,
+          "payload": {
+            "to_address": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "78e8b479ca1aa84976ca11cdfb19ae4f060887b57b16975101e337402e0e188d2f9bb77e6dc2cb20aa56f4321a2a0f989050d09cf94536ebb5603eb4cfecb729"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "timestamp": 1794373481,
+      "previous_hash": "00df023fb4b8550a05f5d7565ace216625003b0a839af304c3a98769576b3b38",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "b04585ece8c750866a583dc8256b1fd4448bb8ca032c32a6e5b6f9ed2336b9b9",
+      "nonce": 387,
+      "difficulty": 2,
+      "miner": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+      "hash": "003ebd3ba058e5cdd320ff2f9d523e4e3c72dcbe0212332c94ec2436f27bbdde",
+      "transactions": []
+    },
+    {
+      "index": 12,
+      "timestamp": 1794373482,
+      "previous_hash": "003ebd3ba058e5cdd320ff2f9d523e4e3c72dcbe0212332c94ec2436f27bbdde",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "a6e17658344bc3583062684acd93fbd3bf4978488754e8f00f71e8187d771d56",
+      "nonce": 546,
+      "difficulty": 2,
+      "miner": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+      "hash": "00ac8bb98beae3a77d4239f87a24e7cae3e29a0fd5a083dd43bda21f3c0e5477",
+      "transactions": []
+    },
+    {
+      "index": 13,
+      "timestamp": 1794373483,
+      "previous_hash": "00ac8bb98beae3a77d4239f87a24e7cae3e29a0fd5a083dd43bda21f3c0e5477",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "3219768d7d59b4e1f0bfdddd3e94df0edecfd01256b6f74ed1239e1d5a062876",
+      "nonce": 118,
+      "difficulty": 2,
+      "miner": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+      "hash": "00cc965de07a92fd08ebf90d38f0f297ee32687960339f02445ef0ec33fd4b08",
+      "transactions": []
+    },
+    {
+      "index": 14,
+      "timestamp": 1794373483,
+      "previous_hash": "00cc965de07a92fd08ebf90d38f0f297ee32687960339f02445ef0ec33fd4b08",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "8afd402b4d814b965677826750209e615947de21a8ae09d498874ba631cce3e8",
+      "nonce": 26,
+      "difficulty": 2,
+      "miner": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+      "hash": "0081d0b9552e234060054fd14bf62e5e071110ec955489edb9b0a4d6b0c10bf5",
+      "transactions": []
+    },
+    {
+      "index": 15,
+      "timestamp": 1794373483,
+      "previous_hash": "0081d0b9552e234060054fd14bf62e5e071110ec955489edb9b0a4d6b0c10bf5",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "788cba6eedd1fd38d1be0be575a429d121680aa32f63a3fbf5a9871053c89c2b",
+      "nonce": 183,
+      "difficulty": 2,
+      "miner": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+      "hash": "008fd7997af9676fc42e810c46d4710acb8757d86c8cabfad5b1a13c5bbb1b82",
+      "transactions": []
+    },
+    {
+      "index": 16,
+      "timestamp": 1794373483,
+      "previous_hash": "008fd7997af9676fc42e810c46d4710acb8757d86c8cabfad5b1a13c5bbb1b82",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "30ce19e5d60f92aa89a15ff2d93f0d9c025c99588da997105bff01f1a5133a8d",
+      "nonce": 225,
+      "difficulty": 2,
+      "miner": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+      "hash": "00b867efc184443d70e4ec11ab35522880671a319ad5142665261237a42c91a1",
+      "transactions": []
+    },
+    {
+      "index": 17,
+      "timestamp": 1794373483,
+      "previous_hash": "00b867efc184443d70e4ec11ab35522880671a319ad5142665261237a42c91a1",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "6db11359c4d470c9b919480251c3742b565beb1c72eb5628a76723c7aa2d2ad6",
+      "nonce": 166,
+      "difficulty": 2,
+      "miner": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+      "hash": "0069b22d6f608339801cac651755b988bfed2769050920214238a5fbbeb41aea",
+      "transactions": []
+    },
+    {
+      "index": 18,
+      "timestamp": 1794373484,
+      "previous_hash": "0069b22d6f608339801cac651755b988bfed2769050920214238a5fbbeb41aea",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "d92fafbb70cc4ede0f829767fe1e5b4456fe8b7fd38030739940de1d14e39564",
+      "nonce": 495,
+      "difficulty": 2,
+      "miner": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+      "hash": "008c2ca02a86dda0292a2ecc395eb78fc0ae76099c2bcbdec38a4994224f0d5d",
+      "transactions": []
+    },
+    {
+      "index": 19,
+      "timestamp": 1794373484,
+      "previous_hash": "008c2ca02a86dda0292a2ecc395eb78fc0ae76099c2bcbdec38a4994224f0d5d",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "42ec3cda3e7a0601a917c4185ad3487a7b00b40a557e9b4c91662958af26e84b",
+      "nonce": 179,
+      "difficulty": 2,
+      "miner": "0xab78bc94d2e66f6b3237e0e4ef38390c7a3008c0",
+      "hash": "00763aacb1f4d24a0f579f56db20ed6760e626b386971e737281d0cdc3e936d2",
+      "transactions": []
+    },
+    {
+      "index": 20,
+      "timestamp": 1794374450,
+      "previous_hash": "00763aacb1f4d24a0f579f56db20ed6760e626b386971e737281d0cdc3e936d2",
+      "merkle_root": "b7b46fd60f66cd0795e62dd85b40ef3f1df9e04d8ed3f66959cc65252ba9b654",
+      "state_root": "250fa773d28b28d0683e62128c61d2206b901f08ea3a4104ec32356fa4916d81",
+      "nonce": 9,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "00dbddf88a01ff59730c18e17e36007620e6701a5ba66547fb88db0fdef53d3d",
+      "transactions": [
+        {
+          "tx_id": "f90546cd793820cc706ef2a656cc604b940d0ddd4a2089451aba57800d943097",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 6,
+          "fee": 1,
+          "timestamp": 1794374450,
+          "payload": {
+            "to_address": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "0bd1347e7d14162d629b4d238064f814606055ae9e86c7eaf500033a24b8b01b1c266357c92cbe455f82d2e18b2361756aa8f481f59f698e8d838cac18d6cef9"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "timestamp": 1794374450,
+      "previous_hash": "00dbddf88a01ff59730c18e17e36007620e6701a5ba66547fb88db0fdef53d3d",
+      "merkle_root": "e2e59d6a52dc880b850a02786b685c7d164a5b03d861f217c71869a0eb441f16",
+      "state_root": "9df375ad03419b2143bef09922c5aa57091abac3bcdf836dacfbeedd476872d9",
+      "nonce": 42,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "0053c430d8c2c5453dacd03be11016923b1edb0ac102ed2bd48c996fe596fa61",
+      "transactions": [
+        {
+          "tx_id": "291917c6a0ee7c1d0fda4c91c9bc5b510e6cb1928b85921b9f61ac2bf11a541b",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 7,
+          "fee": 1,
+          "timestamp": 1794374450,
+          "payload": {
+            "to_address": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "320945bb527830c91c06339a3e9199490584c78758fcdc85dcc0df5963a72e1027761718b24daf56913b36a852123cadac088df04616c2bde05b5afeb0002abd"
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "timestamp": 1794374450,
+      "previous_hash": "0053c430d8c2c5453dacd03be11016923b1edb0ac102ed2bd48c996fe596fa61",
+      "merkle_root": "864d24f2c42103895f0a8a48187cf6efc2d33432bc5a2779c07a46ed3e71d6d7",
+      "state_root": "6ca296b22a66d869d445c63ba82a3b0b489cc3806918f58f5a2b94261ef48b92",
+      "nonce": 66,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "00e9efdc6904c49ad7b5800e22c56c4cc723c31c6d4decb6131f9e292aac9fe5",
+      "transactions": [
+        {
+          "tx_id": "f115a389e075c590b85de114a6bd2fd5f4d8ed774f5edc56b00bb27347b13d06",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 8,
+          "fee": 1,
+          "timestamp": 1794374450,
+          "payload": {
+            "to_address": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "ca3b281e0fe92303a1003957fddad3c85eda3cb874da96830933f70bbd71d5f264a47c05ce59fbd929d20c32c11551d97d0a16a7a2d7b9a056f837793494c754"
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "timestamp": 1794374450,
+      "previous_hash": "00e9efdc6904c49ad7b5800e22c56c4cc723c31c6d4decb6131f9e292aac9fe5",
+      "merkle_root": "b09beaa067fdf314873d9aa69fa3b5cd4cd5dc00590d9001287cb990c5cf13bf",
+      "state_root": "2c57670c6c63d8d7031e944c2e6a6190198e1dff3ddb6b6e019420b505456022",
+      "nonce": 61,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "00d912048c39e7863c0a3da3f66be637c7bfa89fa3a7d9028625c8a7212f9c13",
+      "transactions": [
+        {
+          "tx_id": "7abe63d33111bd224171ab8ba9bcbbff3dc95d44abd9c64fb2ba187c37c50d21",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 9,
+          "fee": 1,
+          "timestamp": 1794374450,
+          "payload": {
+            "to_address": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "327025518fa1dffd37053298f462bff7aca0d386afa7575bdc7b466503adb3df42b91e9227f26dfc69ca717e39d742772aebd9fae548427f127afebda88e62e6"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "timestamp": 1794374451,
+      "previous_hash": "00d912048c39e7863c0a3da3f66be637c7bfa89fa3a7d9028625c8a7212f9c13",
+      "merkle_root": "81f5ea49820a1a38d3ce57987ec494b6405e35e44f9d10c865b5ad077f270512",
+      "state_root": "0a50b59249540e2a78673b2b2ea63b85572f65fba63ec0f6f065ee3f69b26574",
+      "nonce": 226,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "001ce64ee0bc892f974584bf9c199d347102665bca2b058e31eb67b0e540bc37",
+      "transactions": [
+        {
+          "tx_id": "50e31639643cdf190885addabc72e8eb3a570eab1df690ce450b703bf67a1000",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 10,
+          "fee": 1,
+          "timestamp": 1794374451,
+          "payload": {
+            "to_address": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "e29ed89a2c49b7ead7f24caae5be2573e00827b6a2c1eec5a21542e9b878d4e566704c5f658d8a7868213465739a7558b89f71737de7f3ac5633f23becc4bbc7"
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "timestamp": 1794375090,
+      "previous_hash": "001ce64ee0bc892f974584bf9c199d347102665bca2b058e31eb67b0e540bc37",
+      "merkle_root": "5f26863c674571ad4bee128a220fdb0d7c801a22614875857006fcfaea4c606d",
+      "state_root": "71f4d90df147ccdfab29bf2fe5a487a67f3f3bee3d40ee6e1602e677df793345",
+      "nonce": 90,
+      "difficulty": 2,
+      "miner": "0x80e12ce206630a6536d08a485d965e71dc53323c",
+      "hash": "00af8f369296637e27a31ac352196d953486df71a64de0d96adfc5eee0483c04",
+      "transactions": []
+    },
+    {
+      "index": 26,
+      "timestamp": 1794456470,
+      "previous_hash": "00af8f369296637e27a31ac352196d953486df71a64de0d96adfc5eee0483c04",
+      "merkle_root": "ccf0036a56afd8eb4d45caa71d995fea3391baa7ee00356eba77a387c0ecb91d",
+      "state_root": "7833989834d6c8a569fd9a7f9647b91f70dd9d7e7ea6539fc2a61128be797a98",
+      "nonce": 699,
+      "difficulty": 2,
+      "miner": "0xc3a792f6f1e98d4c5cbac0505122a4403d3f2511",
+      "hash": "0042ac5f693704189b1675139814407fca0e1c23b5632d55d9f0e89bfe74f4d5",
+      "transactions": [
+        {
+          "tx_id": "4bba59402d1b86665f291d07d18737c7f1582320bfff24867d4598479be6636e",
+          "type": "PURCHASE_LICENSE",
+          "sender": "0xc3a792f6f1e98d4c5cbac0505122a4403d3f2511",
+          "nonce": 0,
+          "fee": 1,
+          "timestamp": 1794456470,
+          "payload": {
+            "ip_id": "IP-8BAB5CA6CC6B7F97",
+            "license_type": "COMMERCIAL",
+            "scope": "Commercial integration & usage rights",
+            "duration_blocks": 500
+          },
+          "public_key": "023f4b6e1213a8a34d61b732f61da4a9c1472e0e4317bdff191328f64d9eb74214",
+          "signature": "c56732723c83b5bd04485102225c408045d4e444ad489746246479c0b41b49727b35158ee97bfd411cc1f7021e3512dd19f9730e7afb933f109dc188560e7aab"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "timestamp": 1794459374,
+      "previous_hash": "0042ac5f693704189b1675139814407fca0e1c23b5632d55d9f0e89bfe74f4d5",
+      "merkle_root": "88d1faf8ca594345a37119e116ef013a73dbf37bec2a458e277560feed1fc50e",
+      "state_root": "bb6a1009b20d874fad42c649e31337eb7b3a334ced7569b50046127c2236780e",
+      "nonce": 779,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "0015f049392acfa8f0eb0688b93819bd6a207e2ab2462782b9bf780fc5bdba3c",
+      "transactions": [
+        {
+          "tx_id": "f44af02c1de2ff166873f3c70b37b20b2c7f9751ec36d73a8a63aa8d114380f6",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 11,
+          "fee": 1,
+          "timestamp": 1794459374,
+          "payload": {
+            "to_address": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "929aee8839a5a6d3b840b9891737bacc13f102e2c11b8a61ba09d6af67981e66120f01c40654b79aa58b525f6e35bf57e6df55411a6e5121e3101cf6065eb517"
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "timestamp": 1794459375,
+      "previous_hash": "0015f049392acfa8f0eb0688b93819bd6a207e2ab2462782b9bf780fc5bdba3c",
+      "merkle_root": "81ddca2c4fbd838de8110168d0494b43b61b1ba3c9e8b32f268e732f9f96bfe6",
+      "state_root": "c0567563ba5af08eb3bc2b14e90c21ce14fb8fee907e8199e371bff972794542",
+      "nonce": 186,
+      "difficulty": 2,
+      "miner": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+      "hash": "0048e6f809522c0ac21684132cba9560c8edf4feea5a04d54ac0d6ade729ae79",
+      "transactions": [
+        {
+          "tx_id": "b361e71c5f5c8b72756aa7fd8344e95b03e1587719d6f18533d0c1714e84febe",
+          "type": "TRANSFER_TOKENS",
+          "sender": "0x9ef1890d6b5ce72b95880f9baaa6ef601e715be3",
+          "nonce": 12,
+          "fee": 1,
+          "timestamp": 1794459375,
+          "payload": {
+            "to_address": "0xa872259079e7339dc7aa7a11978bce3a8391e506",
+            "amount": 250
+          },
+          "public_key": "03ddb6a65ceb25464c042320b2b19e5bc5c31ad26af2901c1a65ea6c73e56cd06a",
+          "signature": "9de2bad29196edd019b8414a0dc191912c40d602e6ade2b8b8e9b55149265cd22d780aaf91304c52bc5868971d4025ac546f5bcff9bca43d538bb1468fd84a9e"
+        }
+      ]
+    }
+  ],
+  "mempool": []
+}
